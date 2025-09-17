@@ -31,4 +31,3 @@ void lista2 ()
 
   return 0;
 }
-
