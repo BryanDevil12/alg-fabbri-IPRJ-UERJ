@@ -1,0 +1,34 @@
+/* R. Fabbri, 2024 */
+#include <linked_list_string.h>
+#include <iostream>
+#include <cstdlib>
+
+#define MAX 64
+
+struct No2{
+        char name[MAX];
+        No *next;
+};
+
+typedef No2 *Lista;
+
+void lista2 ()
+{
+        std::cout << "teste" << std::end;
+        Lista 2;
+
+        l = (No *) malloc(sizeof(No));
+        l->name[0] = '\0';
+
+        std::cout << std::string(l->name)  << std::end;
+        std::cout << "teste" << std::end;
+
+	        // ou
+
+        printf("%s", l->name);
+        strncpy(l->name, "joao", MAX);
+        printf("%s", l->name);
+
+  return 0;
+}
+
