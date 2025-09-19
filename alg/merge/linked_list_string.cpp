@@ -14,6 +14,37 @@ struct No {
   No *next;
 };
 
+int sum(No *p){
+  int somaDosTamanhos = 0;
+  No *noAtual = p;
+
+  while (noAtual != NULL){
+   somaDosTamanhos += strlen(noAtual->name);
+   noAtual = noAtual->next;
+  }
+  
+  return somaDosTamanhos;
+
+}
+
+struct Noo2 {
+  char *name;
+  Noo2 *next;
+};
+int sum(Noo2 *p){
+  if (p ==NULL){
+    return 0;
+  }
+  return strlen(p->name) + sum(p->next);
+}
+
+struct No3 {
+  char name[MAX_NUMERO_DE_CARACTERES];
+  No3 *esq;
+  No3 *dir;
+};
+
+
 typedef No *Lista;
 
 // ---------------------------------------------------------------
@@ -85,3 +116,44 @@ playground_lista2()
   
   printf("%s", l->name); // assume que nome contem '\0'
 }
+
+
+void
+playground_lista3()
+{
+  std::cout << "\n--- teste arvore (playground_lista3() ---"<< std::endl;
+
+  No3 *raiz = new No3();
+  No3 *noEsquerda = new No3();
+  No3 *noDireita = new No3();
+  No3 *noFolha = new No3();
+
+  strncpy(raiz->name, "Joao", MAX_NUMERO_DE_CARACTERES);
+  strncpy(noEsquerda->name, "MAria", MAX_NUMERO_DE_CARACTERES);
+  strncpy(noDireita->name, "Pedro", MAX_NUMERO_DE_CARACTERES);
+  strncpy(noFolha->name, "Ana", MAX_NUMERO_DE_CARACTERES);
+
+  raiz->esq = noEsquerda;
+  raiz->dir = noDireita;
+
+  noEsquerda->esq=noFolha;
+  noEsquerda->dir = NULL;
+
+  noDireita->esq = NULL;
+  noDireita->dir = NULL;
+  noFolha->esq = NULL;
+  noFolha->dir = NULL;
+
+
+  std::cout << "Raiz da arvore: " << raiz->name << std::endl;
+  std::cout << "Filho da esquerda de: " << raiz->name << ": "<< raiz-esq->name <<  std::endl;
+  std::cout << "Filho da direita de: " << raiz->name << ": "<< raiz-dir->name <<  std::endl;
+  std::cout << "Filho da esquerda de: " << raiz->esq->name << ": "<< raiz->esq->esq->name <<  std::endl;
+
+  delete raiz;
+  delete noEsquerda;
+  delete noDireita;
+  delete noFolha;
+}
+
+
