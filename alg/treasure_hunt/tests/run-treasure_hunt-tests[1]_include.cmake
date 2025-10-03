@@ -1,0 +1,5 @@
+if(EXISTS "/home/aluno/.a/alg-fabbri-IPRJ-UERJ/alg/treasure_hunt/tests/run-treasure_hunt-tests[1]_tests.cmake")
+  include("/home/aluno/.a/alg-fabbri-IPRJ-UERJ/alg/treasure_hunt/tests/run-treasure_hunt-tests[1]_tests.cmake")
+else()
+  add_test(run-treasure_hunt-tests_NOT_BUILT run-treasure_hunt-tests_NOT_BUILT)
+endif()

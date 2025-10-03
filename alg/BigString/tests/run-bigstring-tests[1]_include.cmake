@@ -1,0 +1,5 @@
+if(EXISTS "/home/aluno/.a/alg-fabbri-IPRJ-UERJ/alg/BigString/tests/run-bigstring-tests[1]_tests.cmake")
+  include("/home/aluno/.a/alg-fabbri-IPRJ-UERJ/alg/BigString/tests/run-bigstring-tests[1]_tests.cmake")
+else()
+  add_test(run-bigstring-tests_NOT_BUILT run-bigstring-tests_NOT_BUILT)
+endif()

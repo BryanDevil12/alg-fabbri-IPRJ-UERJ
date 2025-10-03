@@ -1,0 +1,5 @@
+add_test([=[TreasureHuntTest.WorldCreation]=]  /home/aluno/.a/alg-fabbri-IPRJ-UERJ/alg/treasure_hunt/tests/run-treasure_hunt-tests [==[--gtest_filter=TreasureHuntTest.WorldCreation]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[TreasureHuntTest.WorldCreation]=]  PROPERTIES WORKING_DIRECTORY /home/aluno/.a/alg-fabbri-IPRJ-UERJ/alg/treasure_hunt/tests SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[TreasureHuntTest.Busca]=]  /home/aluno/.a/alg-fabbri-IPRJ-UERJ/alg/treasure_hunt/tests/run-treasure_hunt-tests [==[--gtest_filter=TreasureHuntTest.Busca]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[TreasureHuntTest.Busca]=]  PROPERTIES WORKING_DIRECTORY /home/aluno/.a/alg-fabbri-IPRJ-UERJ/alg/treasure_hunt/tests SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set(  run-treasure_hunt-tests_TESTS TreasureHuntTest.WorldCreation TreasureHuntTest.Busca)

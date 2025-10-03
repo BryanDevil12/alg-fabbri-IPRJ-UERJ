@@ -1,0 +1,5 @@
+if(EXISTS "/home/aluno/.a/alg-fabbri-IPRJ-UERJ/alg/merge/tests/run-merge-tests[1]_tests.cmake")
+  include("/home/aluno/.a/alg-fabbri-IPRJ-UERJ/alg/merge/tests/run-merge-tests[1]_tests.cmake")
+else()
+  add_test(run-merge-tests_NOT_BUILT run-merge-tests_NOT_BUILT)
+endif()

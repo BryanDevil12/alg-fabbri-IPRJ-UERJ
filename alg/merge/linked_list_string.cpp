@@ -146,8 +146,8 @@ playground_lista3()
 
 
   std::cout << "Raiz da arvore: " << raiz->name << std::endl;
-  std::cout << "Filho da esquerda de: " << raiz->name << ": "<< raiz-esq->name <<  std::endl;
-  std::cout << "Filho da direita de: " << raiz->name << ": "<< raiz-dir->name <<  std::endl;
+  std::cout << "Filho da esquerda de: " << raiz->name << ": "<< raiz->esq->name <<  std::endl;
+  std::cout << "Filho da direita de: " << raiz->name << ": "<< raiz->dir->name <<  std::endl;
   std::cout << "Filho da esquerda de: " << raiz->esq->name << ": "<< raiz->esq->esq->name <<  std::endl;
 
   delete raiz;
