@@ -125,6 +125,8 @@ No* No::busca(char* nome_desejado, No* inicio) {
 }
 
 #include <ncurses.h>
+#include <map>
+#include <algorithm>
 
 void desenhar_mapa(No* jogador, No* mundo) {
     No* inicio1 = mundo;
@@ -148,4 +150,99 @@ void desenhar_mapa(No* jogador, No* mundo) {
     mvprintw(8, 5, "%s    %s", (jogador == fim1 ? "[*]" : "[ ]"), (jogador == boss ? "[B]" : "[ ]"));
 
     mvprintw(9, 5, "------------");
+}
+
+No* encontrar_no_do_tesouro(No* mundo) {
+    std::queue<No*> q;
+    std::set<No*> visitados;
+
+    q.push(mundo);
+    visitados.insert(mundo);
+
+    while (!q.empty()) {
+        No* atual = q.front();
+        q.pop();
+
+        if (atual->tem_tesouro) {
+            return atual;
+        }
+
+        if (atual->esquerda && visitados.find(atual->esquerda) == visitados.end()) {
+            q.push(atual->esquerda);
+            visitados.insert(atual->esquerda);
+        }
+        if (atual->direita && visitados.find(atual->direita) == visitados.end()) {
+            q.push(atual->direita);
+            visitados.insert(atual->direita);
+        }
+        if (atual->cima && visitados.find(atual->cima) == visitados.end()) {
+            q.push(atual->cima);
+            visitados.insert(atual->cima);
+        }
+        if (atual->baixo && visitados.find(atual->baixo) == visitados.end()) {
+            q.push(atual->baixo);
+            visitados.insert(atual->baixo);
+        }
+    }
+
+    return NULL; // Should not happen if treasure is always placed
+}
+
+#include <map>
+#include <algorithm>
+
+std::vector<No*> encontrar_menor_caminho(No* inicio, No* fim) {
+    std::queue<No*> q;
+    std::map<No*, No*> pais; // child -> parent map to reconstruct path
+    std::vector<No*> caminho;
+
+    q.push(inicio);
+    pais[inicio] = nullptr;
+
+    No* atual = nullptr;
+    while (!q.empty()) {
+        atual = q.front();
+        q.pop();
+
+        if (atual == fim) {
+            break; // Found the destination
+        }
+
+        // Add neighbors to the queue
+        if (atual->esquerda && pais.find(atual->esquerda) == pais.end()) {
+            q.push(atual->esquerda);
+            pais[atual->esquerda] = atual;
+        }
+        if (atual->direita && pais.find(atual->direita) == pais.end()) {
+            q.push(atual->direita);
+            pais[atual->direita] = atual;
+        }
+        if (atual->cima && pais.find(atual->cima) == pais.end()) {
+            q.push(atual->cima);
+            pais[atual->cima] = atual;
+        }
+        if (atual->baixo && pais.find(atual->baixo) == pais.end()) {
+            q.push(atual->baixo);
+            pais[atual->baixo] = atual;
+        }
+    }
+
+    // Reconstruct path from end to start
+    if (atual == fim) {
+        for (No* no = fim; no != nullptr; no = pais[no]) {
+            caminho.push_back(no);
+        }
+        std::reverse(caminho.begin(), caminho.end());
+    }
+
+    return caminho;
+}
+
+const char* obter_direcao(No* de, No* para) {
+    if (de == nullptr || para == nullptr) return "";
+    if (de->direita == para) return "Direita";
+    if (de->esquerda == para) return "Esquerda";
+    if (de->baixo == para) return "Baixo";
+    if (de->cima == para) return "Cima";
+    return "??";
 }
