@@ -1,18 +1,18 @@
 /*
  * =====================================================================================
- * 
+ *
  *        Filename:  dynagraph.c
- * 
+ *
  *     Description:  exercise on completely dynamic graph representation
- * 
+ *
  *         Version:  1.0
  *         Created:  jun/2019
  *        Revision:  none
  *        Compiler:  gcc
- * 
+ *
  *          Author:  Ricardo Fabbri (rfabbri), rfabbri.github.io
  *         Company:  IPRJ/UERJ
- * 
+ *
  * =====================================================================================
  */
 
@@ -20,33 +20,33 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct lista *lista_ptr; 
+typedef struct lista *lista_ptr;
 typedef struct no *no_ptr;
 
 // Guarda uma conexao com peso 'peso' ao no 'no'
-typedef struct lista { 
-  no_ptr no; 
-  int peso; 
-  struct lista *next; 
+typedef struct lista {
+  no_ptr no;
+  int peso;
+  struct lista *next;
 } lista;
 
-typedef struct no { 
-  char nome[32]; 
-  lista *conexoes; 
+typedef struct no {
+  char nome[32];
+  lista *conexoes;
 } no;
 
 // Insere conexao para no na lista de conexoes lst,
 // onde a conexao tem peso "peso"
 void insere(lista **lst, no_ptr no, int peso) {
    lista *conexao = (lista *) malloc(sizeof(lista));
-   conexao->peso = peso; 
+   conexao->peso = peso;
    conexao->no = no;     // diz que conexao vai pra B
    conexao->next = *lst; // insere conexao na lista de conexcoes de A
    *lst = conexao;
 }
-void liga(no_ptr a, no_ptr b, int p) { 
-  insere(&a->conexoes, b, p); 
-  insere(&b->conexoes, a, p); 
+void liga(no_ptr a, no_ptr b, int p) {
+  insere(&a->conexoes, b, p);
+  insere(&b->conexoes, a, p);
 }
 
 #define MAX_NUM_NOS 1000   // maximo numero de nos para componente conexo
@@ -54,14 +54,15 @@ int componente_conexo(no_ptr r, int max_conexao, no_ptr nos[], int *n_nos);
 int componente_conexo_sem_maximo(no_ptr r, no_ptr nos[], int *n_nos);
 void renomeia_friburgo(const no *p_petro);
 void deleta_no_grafo(no_ptr r);
+void imprime_grafo(no_ptr nos, int n);
 
 int main() { // monta um grafo e testa
   no nos[5]; char *nomes[5] = {"Petropolis", "Teresopolis", "Niteroi", "Rio", "Friburgo"};
-  for (int i = 0; i < 5; ++i) { 
+  for (int i = 0; i < 5; ++i) {
     strcpy(nos[i].nome, nomes[i]);
     nos[i].conexoes = NULL;
  }
-  
+
  liga(nos+0, nos+1, 50);
  liga(nos+0, nos+3, 65);
  liga(nos+1, nos+3, 100);
@@ -72,7 +73,7 @@ int main() { // monta um grafo e testa
  liga(nos+3, nos+4, 140);
 
 
-  /*  deleta_no_grafo(nos+3); // deleta Rio*/
+/*  deleta_no_grafo(nos+3); // deleta Rio*/
 
   renomeia_friburgo(nos+0);
   no_ptr nos_componente[MAX_NUM_NOS];
@@ -85,6 +86,8 @@ int main() { // monta um grafo e testa
 
   printf("Componente de %s tem %d nos e peso total %d\n", nos[4].nome, n_nos, peso_total);
   for (int i = 0; i < n_nos; ++i) printf("%s\n", nos_componente[i]->nome);
+
+  imprime_grafo(nos, 5);
 
   return 0;
 }
@@ -174,6 +177,18 @@ componente_conexo(no_ptr r, int max_conexao, no_ptr nos[], int *n_nos)
       peso_total += v->peso + componente_conexo(v->no, max_conexao, nos, n_nos);
   }
   return peso_total;
+}
+
+void imprime_grafo(no_ptr nos, int n) {
+  printf("graph {\n");
+  for (int i = 0; i < n; ++i) {
+    for (lista_ptr l = nos[i].conexoes; l != NULL; l = l->next) {
+      if (&nos[i] < l->no) {
+        printf("  \"%s\" -- \"%s\" [label=%d];\n", nos[i].nome, l->no->nome, l->peso);
+      }
+    }
+  }
+  printf("} \n");
 }
 
 //------------------------------------------------------------------------------

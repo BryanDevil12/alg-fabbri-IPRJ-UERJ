@@ -1,5 +1,6 @@
 add_library(graph
   tree.cpp
+  dynagraph.cpp
 )
 
 add_executable(dynagraph dynagraph.c)
