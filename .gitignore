@@ -13,3 +13,22 @@ cmake_install.cmake
 run-tests
 run-tests*include.cmake
 run-tests*tests.cmake
+
+# Build artifacts
+*.a
+*.o
+*.so
+*.swp
+build/
+bin/
+lib/
+
+# Project specific build artifacts
+alg/benchmark/test/*
+alg/lib/*
+alg/treasure_hunt/libtreasure_hunt.a
+alg/merge/libmerge.a
+alg/merge/liblibmerge.a
+alg/BigString/libBigString.a
+alg/merge/sorted_merge_3way.o
+alg/merge/linked_list_string.o
