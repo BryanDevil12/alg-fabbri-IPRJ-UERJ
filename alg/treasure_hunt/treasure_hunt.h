@@ -16,6 +16,9 @@ struct No {
     No *busca(char *nome_desejado, No *inicio);
 };
 
+// Function to create a new node
+No* criar_no(const char* nome);
+
 // Function to create the game world
 No* criar_mundo();
 
