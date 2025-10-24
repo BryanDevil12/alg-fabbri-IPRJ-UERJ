@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1759499046937,
+  "lastUpdate": 1761312538383,
   "repoUrl": "https://github.com/BryanDevil12/alg-fabbri-IPRJ-UERJ",
   "entries": {
     "C++ Benchmark Results": [
@@ -720,6 +720,96 @@ window.BENCHMARK_DATA = {
             "value": 31458044.04545448,
             "unit": "ns/iter",
             "extra": "iterations: 22\ncpu: 31454954.227272727 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "bryan-devil12@hotmail.com",
+            "name": "BryanDevil12",
+            "username": "BryanDevil12"
+          },
+          "committer": {
+            "email": "bryan-devil12@hotmail.com",
+            "name": "BryanDevil12",
+            "username": "BryanDevil12"
+          },
+          "distinct": true,
+          "id": "8cb1d0a62e65081fb2768ebc075f071b99ea65d9",
+          "message": "feat: Adiciona os componentes de Sort, List e BufferCircular\n\n- Adiciona a implementação e os testes para o componente de ordenação de caracteres (SortChar).\n- Adiciona a implementação e os testes para a lista simplesmente encadeada (ListaSimples).\n- Adiciona a implementação e os testes para a lista duplamente encadeada (ListaDupla).\n- Adiciona a implementação e os testes para o buffer circular (BufferCircular).\n- Atualiza os arquivos de compilação do CMake para incluir os novos componentes.",
+          "timestamp": "2025-10-24T10:13:20-03:00",
+          "tree_id": "a61489545012e6206e0483df56c26f4168a7fe7f",
+          "url": "https://github.com/BryanDevil12/alg-fabbri-IPRJ-UERJ/commit/8cb1d0a62e65081fb2768ebc075f071b99ea65d9"
+        },
+        "date": 1761312537751,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/0",
+            "value": 20.861314854501458,
+            "unit": "ns/iter",
+            "extra": "iterations: 32213724\ncpu: 20.860797776748818 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/1",
+            "value": 31.475342585810512,
+            "unit": "ns/iter",
+            "extra": "iterations: 22523408\ncpu: 31.47249936599292 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/2",
+            "value": 45.95625828248461,
+            "unit": "ns/iter",
+            "extra": "iterations: 15289043\ncpu: 45.955165212106486 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/10",
+            "value": 174.54202765428505,
+            "unit": "ns/iter",
+            "extra": "iterations: 3956276\ncpu: 174.53492729020928 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/50",
+            "value": 815.9900435752456,
+            "unit": "ns/iter",
+            "extra": "iterations: 865170\ncpu: 815.9492735531743 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/100",
+            "value": 1684.5100025134664,
+            "unit": "ns/iter",
+            "extra": "iterations: 417745\ncpu: 1684.3799207650607 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/500",
+            "value": 8166.3010659174,
+            "unit": "ns/iter",
+            "extra": "iterations: 85091\ncpu: 8165.681881750119 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/1000",
+            "value": 16267.18445424211,
+            "unit": "ns/iter",
+            "extra": "iterations: 42867\ncpu: 16266.498238738417 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/10000",
+            "value": 316574.82144459494,
+            "unit": "ns/iter",
+            "extra": "iterations: 2229\ncpu: 316558.6379542395 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/100000",
+            "value": 3206611.838709617,
+            "unit": "ns/iter",
+            "extra": "iterations: 217\ncpu: 3206206.433179723 ns\nthreads: 1"
+          },
+          {
+            "name": "sorted_merge_3way_fixture/BM_sorted_merge_3way/1000000",
+            "value": 31369139.3181818,
+            "unit": "ns/iter",
+            "extra": "iterations: 22\ncpu: 31362806.36363638 ns\nthreads: 1"
           }
         ]
       }
