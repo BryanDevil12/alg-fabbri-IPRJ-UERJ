@@ -32,3 +32,9 @@ alg/merge/liblibmerge.a
 alg/BigString/libBigString.a
 alg/merge/sorted_merge_3way.o
 alg/merge/linked_list_string.o
+
+# Ignore test executables
+**/run-*-tests
+**/run-*-tests\[1\]_tests.cmake
+**/run-*-tests\[1\]_include.cmake
+**/alg/graph/dynagraph
